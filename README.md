@@ -1,8 +1,9 @@
-# app_yt
+# StreamMV
 
-A new Flutter project.
+A platform for you to watch your videos
 
-## Getting Started
+
+### OBS:
 
 This project is a starting point for a Flutter application.
 
