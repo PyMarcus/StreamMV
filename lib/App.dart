@@ -1,3 +1,4 @@
+import 'package:app_yt/search_delegate/CustomSearchDelegate.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:app_yt/windows/Home.dart';
@@ -33,7 +34,9 @@ class _AppState extends State<App> {
         title: Text("StreamMV"),
         actions: <Widget>[
           IconButton(onPressed: (){}, icon: Icon(Icons.videocam)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.search)),
+          IconButton(onPressed: (){
+            showSearch(context: context, delegate: CustomSearchDelegate());
+          }, icon: Icon(Icons.search),),
           IconButton(onPressed: (){}, icon: Icon(Icons.account_circle))
         ],
         backgroundColor: Colors.deepPurpleAccent,
@@ -41,9 +44,8 @@ class _AppState extends State<App> {
 
 
       body: Container(
-        child: Column(
-          children: [windows[_current_index]],
-        ),
+        padding: EdgeInsets.all(16),
+        child: windows[_current_index],
       ),
 
       bottomNavigationBar: BottomNavigationBar(

@@ -3,39 +3,27 @@ import 'package:flutter/material.dart';
 
 class Video{
 
-    String _id;
-    String _title;
-    String _description;
-    String _image;
-    String _channel;
+    String id = "";
+    String title = "";
+    String description = "";
+    String image = "";
+    String channel = "";
 
     // constructor
-    Video(this._id,
-        this._title,
-        this._description,
-        this._image,
-        this._channel
+    Video(this.id,
+      this.title,
+      this.description,
+      this.image,
+      this.channel
+    );
+
+     factory Video.fromJson(Map<String, dynamic> json){
+        return Video(
+            json["id"]["videoId"], json["snippet"]["title"],
+            json["snippet"]["description"], json["snippet"]["thumbnails"]["high"]["url"],
+            json["snippet"]["channelTitle"]
         );
-
-    // getters
-    String get id{
-      return _id;
     }
 
-    String get image{
-      return _image;
-    }
-
-    String get title{
-      return _title;
-    }
-
-    String get channel{
-      return _channel;
-    }
-
-    String get description{
-      return _description;
-    }
 
 }
