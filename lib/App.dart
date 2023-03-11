@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:app_yt/windows/Home.dart';
+import 'package:app_yt/windows/Hot.dart';
+import 'package:app_yt/windows/Subscriptions.dart';
+import 'package:app_yt/windows/Folder.dart';
 
 
 class App extends StatefulWidget {
@@ -17,10 +21,10 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
 
     List<Widget> windows = [
-      Text("1"),
-      Text("2"),
-      Text("3"),
-      Text("4"),
+      Home(),
+      Hot(),
+      Subscriptions(),
+      Folder(),
     ];
 
 
