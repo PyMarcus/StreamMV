@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_youtube/flutter_youtube.dart';
 import '../api/Api.dart';
 import '../models/Video.dart';
 
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+
+  String? query;
+
+  Home(this.query);
+
 
   @override
   _HomeState createState() => _HomeState();
@@ -13,10 +17,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  Future<List<Video>> _listVideos({String find = ''})
+  _HomeState();
+
+  Future<List<Video>> _listVideos({String? find = ''})
   {
     Api api = Api();
-    return api.search(find);
+    return api.search(widget.query);
   }
 
 
@@ -40,7 +46,12 @@ class _HomeState extends State<Home> {
                           List<Video>? videos = snapshot.data;
                           if(videos!.length > 0){
                             Video video = videos[ index ];
-                            return Column(
+                            return GestureDetector(onTap: (){
+                              FlutterYoutube.playYoutubeVideoById(apiKey: TOKEN,
+                                  videoId: video.id,
+                              autoPlay: true, fullScreen: true);
+                            },
+                            child: Column(
                               children: <Widget>[
                                 Container(
                                   padding: EdgeInsets.all(8),
@@ -57,7 +68,7 @@ class _HomeState extends State<Home> {
                                   subtitle: Text( video.channel ),
                                 )
                               ],
-                            );
+                            ),);
                           }return Text("No data");
 
                         },

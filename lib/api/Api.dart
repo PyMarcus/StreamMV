@@ -12,7 +12,7 @@ const String BASE_URL = "https://www.googleapis.com/youtube/v3";
 
 class Api{
 
-  Future<List<Video>> search(String find) async{
+  Future<List<Video>> search(String? find) async{
     http.Response response = await http.get(
         BASE_URL + "/search?part=snippet&type=video&maxResults=20&order=date&key=$TOKEN&q=$find"
     );

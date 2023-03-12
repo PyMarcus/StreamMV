@@ -17,12 +17,13 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
 
   int _current_index = 0;
+  String? response = '';
 
   @override
   Widget build(BuildContext context) {
 
     List<Widget> windows = [
-      Home(),
+      Home(response),
       Hot(),
       Subscriptions(),
       Folder(),
@@ -34,8 +35,11 @@ class _AppState extends State<App> {
         title: Text("StreamMV"),
         actions: <Widget>[
           IconButton(onPressed: (){}, icon: Icon(Icons.videocam)),
-          IconButton(onPressed: (){
-            showSearch(context: context, delegate: CustomSearchDelegate());
+          IconButton(onPressed: ()async{
+            String? _res = await showSearch(context: context, delegate: CustomSearchDelegate());
+            setState(() {
+              response = _res;
+            });
           }, icon: Icon(Icons.search),),
           IconButton(onPressed: (){}, icon: Icon(Icons.account_circle))
         ],
