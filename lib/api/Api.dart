@@ -5,7 +5,7 @@ import 'dart:convert';
 import '../models/Video.dart';
 
 
-const String TOKEN = "AIzaSyB68X_U_KPHv3hcnvC4rltG3beEIKc73SE";
+const String TOKEN = "";
 const String CHANNEL_ID = "mg7netw1JuM";
 const String BASE_URL = "https://www.googleapis.com/youtube/v3";
 
